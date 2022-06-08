@@ -1,0 +1,1 @@
+{"buildTargets":["clean","run","test","tidy","valgrind"],"launchTargets":["/home/yan/b-ball>test()"],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
