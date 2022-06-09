@@ -2,6 +2,7 @@
 #define GAME_HPP_
 
 #include "Team.hpp"
+#include <random>
 
 namespace ex6
 {
@@ -12,7 +13,10 @@ namespace ex6
             Team visitor_team;
             int points_home;
             int points_visitor;
+            static std::default_random_engine engine;
+
             void generate_results();
+            
         
         public:
             Game(Team & home_team, Team & visitor_team);

@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun  9 11:52:21 2022
+# Make data base, printed on Thu Jun  9 23:16:11 2022
 
 # Variables
 
@@ -59,7 +61,7 @@ PATH = /home/yan/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-0bdad79d-70e2-4770-bf96-8f7a54672ae4.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-f2d0effb-915e-49e0-9161-bd0880c765db.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -75,7 +77,7 @@ PWD = /home/yan/b-ball
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/12_interop
+WSL_INTEROP = /run/WSL/23660_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -87,7 +89,7 @@ LOGNAME = yan
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # makefile (from 'Makefile', line 14)
-HEADERS = $(wildcard $(SOURCE_PATH)/*.hpp)
+HEADERS = $(wildcard $(SOURCE_PATH)/*.hpp) doctest.h
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -164,10 +166,8 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 WSL_DISTRO_NAME = Ubuntu-20.04
 # makefile (from 'Makefile', line 10)
 TIDY_FLAGS = -extra-arg=-std=$(CXXVERSION) -checks=bugprone-*,clang-analyzer-*,cppcoreguidelines-*,performance-*,portability-*,readability-*,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-cppcoreguidelines-owning-memory --warnings-as-errors=*
-# environment
-MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=78/1024=8%, Rehash=0, Collisions=4/112=4%
+# Load=77/1024=8%, Rehash=0, Collisions=4/114=4%
 
 # Pattern-specific Variable Values
 
@@ -175,19 +175,19 @@ MOTD_SHOWN = update-motd
 
 # Directories
 
-# . (device 2064, inode 85267): 8 files, no impossibilities.
-# sources (device 2064, inode 85398): 12 files, no impossibilities.
+# . (device 2064, inode 85267): 16 files, no impossibilities.
+# sources (device 2064, inode 85398): 16 files, no impossibilities.
 
-# 20 files, no impossibilities in 2 directories.
+# 32 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
-%.o: %.cpp sources/Game.hpp sources/Team.hpp sources/Schedule.hpp sources/League.hpp sources/Record.hpp
-#  recipe to execute (from 'Makefile', line 23):
+%.o: %.cpp sources/Season.hpp sources/Game.hpp sources/Statistics.hpp sources/Team.hpp sources/Schedule.hpp sources/League.hpp sources/Record.hpp doctest.h
+#  recipe to execute (from 'Makefile', line 30):
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
 
-objects/%.o: sources/%.cpp sources/Game.hpp sources/Team.hpp sources/Schedule.hpp sources/League.hpp sources/Record.hpp
-#  recipe to execute (from 'Makefile', line 26):
+objects/%.o: sources/%.cpp sources/Season.hpp sources/Game.hpp sources/Statistics.hpp sources/Team.hpp sources/Schedule.hpp sources/League.hpp sources/Record.hpp doctest.h
+#  recipe to execute (from 'Makefile', line 33):
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
 
 # 2 implicit rules, 0 (0.0%) terminal.
@@ -195,10 +195,22 @@ objects/%.o: sources/%.cpp sources/Game.hpp sources/Team.hpp sources/Schedule.hp
 # Files
 
 # Not a target:
+objects/Season.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 all:
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+TestRunner.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
@@ -210,15 +222,21 @@ objects/Schedule.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-08 18:11:46.929199351
+#  Last modified 2022-06-09 23:15:59.166192507
 #  File has been updated.
 #  Successfully updated.
 
-test: objects/Team.o objects/Record.o objects/Game.o objects/League.o objects/Schedule.o
+# Not a target:
+Test.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 20):
+
+test: Test.o TestRunner.o objects/Team.o objects/Record.o objects/Season.o objects/Game.o objects/League.o objects/Statistics.o objects/Schedule.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 22):
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
 # Not a target:
@@ -254,16 +272,30 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 42):
 	rm -f $(OBJECTS) *.o test* 
 	rm -f StudentTest*.cpp
+
+# Not a target:
+objects/Statistics.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 tidy:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 30):
+#  recipe to execute (from 'Makefile', line 36):
+ 
 	clang-tidy $(SOURCES) $(HEADERS) $(TIDY_FLAGS) --
+
+main: objects/Team.o objects/Record.o objects/Season.o objects/Game.o objects/League.o objects/Statistics.o objects/Schedule.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 26):
+	$(CXX) $(CXXFLAGS) $^ -o $@ 
 
 # Not a target:
 objects/Record.o:
@@ -275,26 +307,23 @@ valgrind: test
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
-make: *** No rule to make target 'all'.  Stop.
-
-#  recipe to execute (from 'Makefile', line 33):
+#  recipe to execute (from 'Makefile', line 39):
 	valgrind --tool=memcheck $(VALGRIND_FLAGS) ./test 2>&1 | { egrep "lost| at " || true; }
 
 # files hash-table stats:
-# Load=14/1024=1%, Rehash=0, Collisions=0/32=0%
+# Load=19/1024=2%, Rehash=0, Collisions=0/48=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 42 / storage = 455 B / avg = 10 B
-# current buf: size = 8162 B / used = 455 B / count = 42 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 57 / storage = 655 B / avg = 11 B
+# current buf: size = 8162 B / used = 655 B / count = 57 / avg = 11 B
 
-# strcache performance: lookups = 61 / hit rate = 31%
+# strcache performance: lookups = 92 / hit rate = 38%
 # hash-table stats:
-# Load=42/8192=1%, Rehash=0, Collisions=2/61=3%
-# Finished Make data base on Thu Jun  9 11:52:21 2022
+# Load=57/8192=1%, Rehash=0, Collisions=2/92=2%
+# Finished Make data base on Thu Jun  9 23:16:11 2022
 
  

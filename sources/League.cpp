@@ -10,7 +10,7 @@ using namespace std;
 
 ex6::League::League() 
 {
-    this->teams = new Team[20];
+    this->teams = new ex6::Team[20];
     srand(SEED);
     for(int i=0; i < LEAGUESIZE; i++)
     {
@@ -20,7 +20,7 @@ ex6::League::League()
 ex6::League::League(vector<Team> teams)
 {
     this->teams = new Team[20];
-    int i=0;
+    size_t i=0;
     for(i=0; i< LEAGUESIZE && i < teams.size(); i++)
     {
         this->teams[i] = teams.at(i);

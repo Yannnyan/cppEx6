@@ -1,10 +1,5 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory '/home/yan/b-ball'
-clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile sources/Team.cpp -o objects/Team.o
-clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile sources/Record.cpp -o objects/Record.o
-clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile sources/Game.cpp -o objects/Game.o
-clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile sources/League.cpp -o objects/League.o
-clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile sources/Schedule.cpp -o objects/Schedule.o
-clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources objects/Team.o objects/Record.o objects/Game.o objects/League.o objects/Schedule.o -o test
+make: Nothing to be done for 'run'.
 make: Leaving directory '/home/yan/b-ball'
  

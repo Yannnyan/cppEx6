@@ -4,6 +4,11 @@ using namespace std;
 
 #include <random>
 
+#define MAXPOINTS 10
+
+std::default_random_engine ex6::Game::engine;
+
+
 ex6::Game::Game(Team & home_team, Team & visitor_team) : home_team(home_team), visitor_team(visitor_team), points_home(0), points_visitor(0)
 {
 
@@ -26,12 +31,18 @@ int ex6::Game::get_visitorPoints()
 
 void ex6::Game::generate_results()
 {
-    std::default_random_engine engine;
-    std::normal_distribution<int> d{75, 25};
-    normal_distribution<int> d1{78, 22};
-    this->points_home = d(engine);
-    this->points_visitor = d(engine);
-    if(this->points_home >= this->points_visitor)
+    std::normal_distribution<> h_d{75, 25};
+    normal_distribution<> v_d{78, 22};
+    this->points_home = h_d(engine);
+    this->points_visitor = v_d(engine);
+    // calc value points
+    int add_home_points = (int)MAXPOINTS * this->home_team.getValue();
+    int add_vis_points = (int) MAXPOINTS * this->visitor_team.getValue(); 
+    // add extra value points
+    this->points_home = points_home + add_home_points > 100 ? 100 : points_home + add_home_points;
+    this->points_visitor = points_visitor + add_home_points > 100 ? 100 : points_visitor + add_vis_points;
+    // add to the record the results
+    if(this->points_home >= this->points_visitor) // home team wins if equal
     {
         this->home_team.getRecord().team_won();
         this->visitor_team.getRecord().team_lost();

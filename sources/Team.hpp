@@ -19,9 +19,10 @@ namespace ex6
              */
             double value;
             Record record;
+            
         public:
             Team();
-            Team(double value, std::string & name);
+            Team(double value, const std::string & name);
             std::string & getName();
             double getValue();
             Record & getRecord();

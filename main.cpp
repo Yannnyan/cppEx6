@@ -1,5 +1,5 @@
-#include "Season.hpp"
-#include "League.hpp"
+#include "sources/Season.hpp"
+#include "sources/League.hpp"
 #include <iostream>
 #include <stdlib.h>
 

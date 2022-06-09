@@ -11,20 +11,26 @@ TIDY_FLAGS=-extra-arg=-std=$(CXXVERSION) -checks=bugprone-*,clang-analyzer-*,cpp
 VALGRIND_FLAGS=-v --leak-check=full --show-leak-kinds=all  --error-exitcode=99
 
 SOURCES=$(wildcard $(SOURCE_PATH)/*.cpp)
-HEADERS=$(wildcard $(SOURCE_PATH)/*.hpp)
+HEADERS=$(wildcard $(SOURCE_PATH)/*.hpp) doctest.h
 OBJECTS=$(subst sources/,objects/,$(subst .cpp,.o,$(SOURCES)))
+
+
 
 run: test
 
-test:  $(OBJECTS)
+test: Test.o TestRunner.o $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
+
+
+main: $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $^ -o $@ 
+
 
 %.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
 
 $(OBJECT_PATH)/%.o: $(SOURCE_PATH)/%.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
-
 
 tidy:
 	clang-tidy $(SOURCES) $(HEADERS) $(TIDY_FLAGS) --
@@ -35,3 +41,4 @@ valgrind: test
 clean:
 	rm -f $(OBJECTS) *.o test* 
 	rm -f StudentTest*.cpp
+	rm -f main

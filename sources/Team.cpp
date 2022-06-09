@@ -7,8 +7,11 @@ using namespace ex6;
 using namespace std;
 
 
+ex6::Team::Team() : value(0), record()
+{
 
-ex6::Team::Team(double value, string & name) : value(value), name(name), record()
+}
+ex6::Team::Team(double value, const string & name) : value(value), name(name), record()
 {
 
 }
