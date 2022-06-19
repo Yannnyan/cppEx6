@@ -1,5 +1,15 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/yan/b-ball'
-make: Nothing to be done for 'run'.
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources -g --compile Test.cpp -o Test.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources -g --compile TestRunner.cpp -o TestRunner.o
+ 
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources -g --compile sources/Team.cpp -o objects/Team.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources -g --compile sources/Record.cpp -o objects/Record.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources -g --compile sources/Season.cpp -o objects/Season.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources -g --compile sources/Game.cpp -o objects/Game.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources -g --compile sources/League.cpp -o objects/League.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources -g --compile sources/Statistics.cpp -o objects/Statistics.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources -g --compile sources/Schedule.cpp -o objects/Schedule.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources -g Test.o TestRunner.o objects/Team.o objects/Record.o objects/Season.o objects/Game.o objects/League.o objects/Statistics.o objects/Schedule.o -o test
 make: Leaving directory '/home/yan/b-ball'
  

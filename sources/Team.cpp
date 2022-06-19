@@ -32,6 +32,16 @@ Record & ex6::Team::getRecord()
 }
 
 
-
+bool ex6::Team::operator < (Team & teamB)
+{
+    if(getRecord().get_wins() - getRecord().get_losses() < teamB.getRecord().get_wins() - teamB.getRecord().get_losses())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
 

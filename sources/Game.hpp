@@ -9,8 +9,8 @@ namespace ex6
     class Game
     {
         private:
-            Team home_team;
-            Team visitor_team;
+            Team & home_team;
+            Team & visitor_team;
             int points_home;
             int points_visitor;
             static std::default_random_engine engine;

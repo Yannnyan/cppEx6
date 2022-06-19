@@ -26,6 +26,7 @@ namespace ex6
             std::string & getName();
             double getValue();
             Record & getRecord();
+            bool operator<( Team & teamB);
 
     };
 

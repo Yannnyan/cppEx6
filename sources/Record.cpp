@@ -6,7 +6,7 @@
 // ex6::Record::
 
 
-ex6::Record::Record() : num_wins(0), num_losses(0), longest_win_streak(0) , current_win_streak(0)
+ex6::Record::Record() : num_wins(0), num_losses(0), longest_win_streak(0) , current_win_streak(0), longest_loss_streak(0), current_loss_streak(0)
 {
 
 }
@@ -23,6 +23,7 @@ void ex6::Record::team_lost()
     this->num_losses +=1;
     this->current_loss_streak +=1;
     this->current_win_streak = 0;
+    this->update_streak();
 }
 
 

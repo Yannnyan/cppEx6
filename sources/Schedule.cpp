@@ -1,6 +1,6 @@
 #include "Schedule.hpp"
-
-
+#include <algorithm>
+#include <vector>
 
 
 using namespace ex6;
@@ -12,7 +12,7 @@ ex6::Schedule::Schedule(League & league) : teams(league.get_teams()), init_teams
     set_initState();
 }
 
-Team * ex6::Schedule::get_teams()
+std::vector<Team> * ex6::Schedule::get_teams()
 {
     return this->teams;
 }
@@ -24,7 +24,7 @@ bool ex6::Schedule::is_RoundEnded()
     {
         throw("cannot check if round ended if init_teams is null ptr.");
     }
-    if(this->init_teams[1].getName() == this->teams[1].getName())
+    if(init_teams->at(1).getName() == teams->at(1).getName())
     {
         return true;
     }
@@ -34,23 +34,18 @@ bool ex6::Schedule::is_RoundEnded()
 
 void ex6::Schedule::set_initState()
 {
-    this->init_teams = new Team[LEAGUESIZE];
-    for(int i=0; i < LEAGUESIZE; i++)
+    if(init_teams != nullptr)
     {
-        this->init_teams[i] = this->teams[i];
+        throw("cannot instantiate new intiState.");
+    }
+    init_teams = new std::vector<Team>;
+    for(size_t i=0; i < LEAGUESIZE; i++)
+    {
+        init_teams->push_back(teams->at(i));
     }
 }
 
 void ex6::Schedule::set_next_state()
 {
-    Team * temp = &this->teams[1];
-    Team * newtemp;
-    // fix the first element
-    for(int i=1; i< LEAGUESIZE - 1; i++)
-    {
-        newtemp = &this->teams[i+1];
-        this->teams[i+1] = *temp;
-        temp = newtemp;
-    }
-    this->teams[1] = *newtemp;
+   std::rotate(teams->begin()+1, teams->begin() +2, teams->end());
 }

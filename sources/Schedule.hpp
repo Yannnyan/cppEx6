@@ -8,8 +8,8 @@ namespace ex6
     class Schedule
     {
         private:
-            Team * teams;
-            Team * init_teams;
+            std::vector<Team> * teams;
+            std::vector<Team> * init_teams;
         
         public:
             Schedule() = delete;
@@ -31,7 +31,7 @@ namespace ex6
              * 
              * @return Team* 
              */
-            Team * get_teams();
+            std::vector<Team> * get_teams();
         private:
             /**
              * @brief Set the initial state of the team matching

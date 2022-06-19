@@ -3,6 +3,8 @@ using namespace ex6;
 using namespace std;
 
 #include <random>
+#include <iostream>
+
 
 #define MAXPOINTS 10
 
@@ -38,9 +40,13 @@ void ex6::Game::generate_results()
     // calc value points
     int add_home_points = (int)MAXPOINTS * this->home_team.getValue();
     int add_vis_points = (int) MAXPOINTS * this->visitor_team.getValue(); 
+    
+    points_home = points_home < 55 ? 55 : points_home;
+    points_visitor = points_visitor < 50 ? 50 : points_visitor;
     // add extra value points
     this->points_home = points_home + add_home_points > 100 ? 100 : points_home + add_home_points;
     this->points_visitor = points_visitor + add_home_points > 100 ? 100 : points_visitor + add_vis_points;
+    std::cout << "home points " + to_string(points_home) + "visitor points " + to_string(points_visitor) << std::endl; 
     // add to the record the results
     if(this->points_home >= this->points_visitor) // home team wins if equal
     {

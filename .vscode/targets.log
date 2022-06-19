@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun  9 23:16:11 2022
+# Make data base, printed on Tue Jun 14 08:23:24 2022
 
 # Variables
 
@@ -37,7 +37,7 @@ SHELL = /bin/sh
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
-_ = /home/yan/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/node
+_ = /home/yan/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/node
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # 'override' directive
@@ -45,7 +45,7 @@ GNUMAKEFLAGS :=
 # makefile (from 'Makefile', line 13)
 SOURCES = $(wildcard $(SOURCE_PATH)/*.cpp)
 # makefile (from 'Makefile', line 9)
-CXXFLAGS = -std=$(CXXVERSION) -Werror -Wsign-conversion -I$(SOURCE_PATH)
+CXXFLAGS = -std=$(CXXVERSION) -Werror -Wsign-conversion -I$(SOURCE_PATH) -g
 # environment
 XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
 # environment
@@ -57,11 +57,11 @@ VSCODE_CWD = /mnt/c/Users/Yan/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/yan/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/Microsoft SQL Server/150/Tools/Binn/:/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/:/mnt/c/Program Files (x86)/Microsoft SQL Server/150/Tools/Binn/:/mnt/c/Program Files/Microsoft SQL Server/150/DTS/Binn/:/mnt/c/Program Files (x86)/Microsoft SQL Server/150/DTS/Binn/:/mnt/c/Program Files/Azure Data Studio/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/Yan/.jdks/openjdk-18.0.1.1/bin:/mnt/c/Program Files/MySQL/MySQL Shell 8.0/bin/:/mnt/c/Users/Yan/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Yan/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Azure Data Studio/bin:/mnt/c/Program Files/JetBrains/IntelliJ IDEA Educational Edition 2022.1.1/bin:/mnt/c/Users/Yan/.jdks/openjdk-18.0.1.1/bin:/snap/bin
+PATH = /home/yan/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/Microsoft SQL Server/150/Tools/Binn/:/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/:/mnt/c/Program Files (x86)/Microsoft SQL Server/150/Tools/Binn/:/mnt/c/Program Files/Microsoft SQL Server/150/DTS/Binn/:/mnt/c/Program Files (x86)/Microsoft SQL Server/150/DTS/Binn/:/mnt/c/Program Files/Azure Data Studio/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/Yan/.jdks/openjdk-18.0.1.1/bin:/mnt/c/Program Files/MySQL/MySQL Shell 8.0/bin/:/mnt/c/Users/Yan/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Yan/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Azure Data Studio/bin:/mnt/c/Program Files/JetBrains/IntelliJ IDEA Educational Edition 2022.1.1/bin:/mnt/c/Users/Yan/.jdks/openjdk-18.0.1.1/bin:/snap/bin
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-f2d0effb-915e-49e0-9161-bd0880c765db.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-7411f61b-8686-4ddb-bfd4-44a9a576e86a.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -77,7 +77,7 @@ PWD = /home/yan/b-ball
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/23660_interop
+WSL_INTEROP = /run/WSL/12_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -166,8 +166,10 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 WSL_DISTRO_NAME = Ubuntu-20.04
 # makefile (from 'Makefile', line 10)
 TIDY_FLAGS = -extra-arg=-std=$(CXXVERSION) -checks=bugprone-*,clang-analyzer-*,cppcoreguidelines-*,performance-*,portability-*,readability-*,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-cppcoreguidelines-owning-memory --warnings-as-errors=*
+# environment
+MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=77/1024=8%, Rehash=0, Collisions=4/114=4%
+# Load=78/1024=8%, Rehash=0, Collisions=4/115=3%
 
 # Pattern-specific Variable Values
 
@@ -175,10 +177,10 @@ TIDY_FLAGS = -extra-arg=-std=$(CXXVERSION) -checks=bugprone-*,clang-analyzer-*,c
 
 # Directories
 
-# . (device 2064, inode 85267): 16 files, no impossibilities.
+# . (device 2064, inode 85267): 15 files, no impossibilities.
 # sources (device 2064, inode 85398): 16 files, no impossibilities.
 
-# 32 files, no impossibilities in 2 directories.
+# 31 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -222,7 +224,7 @@ objects/Schedule.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-09 23:15:59.166192507
+#  Last modified 2022-06-11 20:14:42.623558024
 #  File has been updated.
 #  Successfully updated.
 
@@ -275,27 +277,34 @@ clean:
 #  recipe to execute (from 'Makefile', line 42):
 	rm -f $(OBJECTS) *.o test* 
 	rm -f StudentTest*.cpp
+	rm -f main
 
 # Not a target:
 objects/Statistics.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 
 tidy:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 36):
- 
 	clang-tidy $(SOURCES) $(HEADERS) $(TIDY_FLAGS) --
 
-main: objects/Team.o objects/Record.o objects/Season.o objects/Game.o objects/League.o objects/Statistics.o objects/Schedule.o
+main: objects/Team.o objects/Record.o objects/Season.o objects/Game.o objects/League.o objects/Statistics.o objects/Schedule.o main.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 26):
 	$(CXX) $(CXXFLAGS) $^ -o $@ 
+
+# Not a target:
+main.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 objects/Record.o:
@@ -311,19 +320,19 @@ valgrind: test
 	valgrind --tool=memcheck $(VALGRIND_FLAGS) ./test 2>&1 | { egrep "lost| at " || true; }
 
 # files hash-table stats:
-# Load=19/1024=2%, Rehash=0, Collisions=0/48=0%
+# Load=20/1024=2%, Rehash=0, Collisions=0/50=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 57 / storage = 655 B / avg = 11 B
-# current buf: size = 8162 B / used = 655 B / count = 57 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 58 / storage = 662 B / avg = 11 B
+# current buf: size = 8162 B / used = 662 B / count = 58 / avg = 11 B
 
-# strcache performance: lookups = 92 / hit rate = 38%
+# strcache performance: lookups = 92 / hit rate = 36%
 # hash-table stats:
-# Load=57/8192=1%, Rehash=0, Collisions=2/92=2%
-# Finished Make data base on Thu Jun  9 23:16:11 2022
+# Load=58/8192=1%, Rehash=0, Collisions=2/92=2%
+# Finished Make data base on Tue Jun 14 08:23:24 2022
 
  

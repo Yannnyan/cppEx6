@@ -6,7 +6,7 @@ CXX=clang++-9
 CXXVERSION=c++2a
 SOURCE_PATH=sources
 OBJECT_PATH=objects
-CXXFLAGS=-std=$(CXXVERSION) -Werror -Wsign-conversion -I$(SOURCE_PATH)
+CXXFLAGS=-std=$(CXXVERSION) -Werror -Wsign-conversion -I$(SOURCE_PATH) -g
 TIDY_FLAGS=-extra-arg=-std=$(CXXVERSION) -checks=bugprone-*,clang-analyzer-*,cppcoreguidelines-*,performance-*,portability-*,readability-*,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-cppcoreguidelines-owning-memory --warnings-as-errors=*
 VALGRIND_FLAGS=-v --leak-check=full --show-leak-kinds=all  --error-exitcode=99
 
@@ -22,7 +22,7 @@ test: Test.o TestRunner.o $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
 
-main: $(OBJECTS)
+main: $(OBJECTS) main.o
 	$(CXX) $(CXXFLAGS) $^ -o $@ 
 
 

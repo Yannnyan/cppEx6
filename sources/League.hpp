@@ -11,7 +11,7 @@ namespace ex6
     class League
     {
         private:
-            Team * teams;
+            std::vector<Team> * teams;
             double rand_value_generator();
             Team rand_team_generator(int i);
         public:
@@ -26,13 +26,13 @@ namespace ex6
              * the rest gets randomized.
              * @param teams 
              */
-            League(std::vector<Team> teams);
+            League(std::vector<Team> & teams);
             /**
              * @brief Get the teams object
              * 
              * @return Team* 
              */
-            Team * get_teams();
+            std::vector<Team> * get_teams();
     };
 }
 

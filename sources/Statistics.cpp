@@ -1,5 +1,7 @@
 #include "Statistics.hpp"
 #include <stdlib.h>
+#include <algorithm>
+#include <vector>
 
 ex6::Statistics::Statistics(League & league) : league(league), unique_team_win_counter(0)
 {
@@ -8,57 +10,59 @@ ex6::Statistics::Statistics(League & league) : league(league), unique_team_win_c
 int ex6::Statistics::get_unique_team_win_counter()
 {
     this->unique_team_win_counter = 0;
-    Team * teams = this->league.get_teams();
-    for(int i=0; i< LEAGUESIZE; i++)
+    std::vector<Team> * teams = this->league.get_teams();
+    for(size_t i=0; i< LEAGUESIZE; i++)
     {
-        if( teams->getRecord().get_wins() > 0)
+        if( teams->at(i).getRecord().get_wins() > 0)
         {
             this->unique_team_win_counter +=1;
         }
     }
     return this->unique_team_win_counter;
 }
+
+void bublesort(std::vector<ex6::Team> * teams)
+{
+    for(size_t i=0; i< teams->size(); i++)
+    {
+        for(size_t j=0; j< teams->size(); j++)
+        {
+            // swap
+            if(teams->at(i) < teams->at(j))
+            {
+                ex6::Team temp = teams->at(i);
+                teams->at(i) = teams->at(j);
+                teams->at(j) = temp;
+            }
+        }
+    }
+}
 std::string ex6::Statistics::get_leading_teams(int num)
 {
-    if(num > 20 || num < 0)
+    if(num > 20 || num <= 0)
     {
         throw("invalid num");
     }
-    Team * teams = this->league.get_teams();
-    qsort(teams , sizeof(Team), LEAGUESIZE, team_comparator);
+    std::vector<Team> * teams = this->league.get_teams();
+    bublesort(teams);
     std::string ret;
-    for(int i=0; i< num; i++)
+    for(size_t i= 0; i  < num; i++)
     {
-        ret += teams[i].getName();
-        ret += "  ";
+        ret += teams->at(i).getName();
+        ret += " ";
     }
     return ret;
 }
 
-int ex6::Statistics::team_comparator(const void *  teamA, const void * teamB)
-{
-    Team * A = (Team *) teamA;
-    Team * B = (Team *) teamB;
-    if(A->getRecord().get_wins() > B->getRecord().get_wins())
-    {
-        return -1;
-    }
-    else
-    {
-        return 1;
-    }
-}
-
-
 int ex6::Statistics::get_longest_winStreak()
 {
     int longest_param = 0;
-    Team * teams = this->league.get_teams();
-    for(int i=0; i< LEAGUESIZE; i++)
+    std::vector<Team> * teams = this->league.get_teams();
+    for(size_t i=0; i< LEAGUESIZE; i++)
     {
-        if(teams[i].getRecord().get_longest_win_streak() > longest_param)
+        if(teams->at(i).getRecord().get_longest_win_streak() > longest_param)
         {
-            longest_param = teams[i].getRecord().get_longest_win_streak();
+            longest_param = teams->at(i).getRecord().get_longest_win_streak();
         }
     }
     return longest_param;
@@ -66,17 +70,47 @@ int ex6::Statistics::get_longest_winStreak()
 int ex6::Statistics::get_longest_lossStreak()
 {
     int longest_param = 0;
-    Team * teams = this->league.get_teams();
-    for(int i=0; i< LEAGUESIZE; i++)
+    std::vector<Team> * teams = this->league.get_teams();
+    for(size_t i=0; i< LEAGUESIZE; i++)
     {
-        if(teams[i].getRecord().get_longest_loss_streak() > longest_param)
+        if(teams->at(i).getRecord().get_longest_loss_streak() > longest_param)
         {
-            longest_param = teams[i].getRecord().get_longest_loss_streak();
+            longest_param = teams->at(i).getRecord().get_longest_loss_streak();
         }
     }
     return longest_param;
 }
+std::string ex6::Statistics::get_worst_teams(int num)
+{
+    if(num > 20 || num <= 0)
+    {
+        throw("invalid num");
+    }
+    std::vector<Team> * teams = this->league.get_teams();
+    bublesort(teams);
+    std::string ret;
+    for(size_t i= LEAGUESIZE -1; i >= LEAGUESIZE - num; i--)
+    {
+        ret += teams->at(i).getName();
+        ret += " ";
+    }
+    return ret;
 
+}
+std::string ex6::Statistics::undefeated_teams()
+{
+    std::string ret;
+    std::vector<Team> * teams = this->league.get_teams();
+    for(size_t i = 0; i< LEAGUESIZE; i++)
+    {
+        if(teams->at(i).getRecord().get_losses() == 0)
+        {
+            ret += teams->at(i).getName();
+            ret += " ";
+        }
+    }
+    return ret;
+}
 std::string ex6::Statistics::get_summary()
 {
     std::string sum;

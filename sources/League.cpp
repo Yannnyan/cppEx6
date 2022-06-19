@@ -6,28 +6,28 @@
 using namespace ex6;
 using namespace std;
 #define SEED 7
-#define nameLength 5
 
 ex6::League::League() 
 {
-    this->teams = new ex6::Team[20];
+    this->teams = new vector<Team>();
     srand(SEED);
     for(int i=0; i < LEAGUESIZE; i++)
     {
-        this->teams[i] = rand_team_generator(i);
+        this->teams->push_back(rand_team_generator(i));
     }
 }
-ex6::League::League(vector<Team> teams)
+ex6::League::League(vector<Team> & teams)
 {
-    this->teams = new Team[20];
+    srand(SEED);
+    this->teams = new vector<Team>;
     size_t i=0;
     for(i=0; i< LEAGUESIZE && i < teams.size(); i++)
     {
-        this->teams[i] = teams.at(i);
+        this->teams->push_back(teams.at(i));
     }
     for(; i< LEAGUESIZE; i++)
     {
-        this->teams[i] = rand_team_generator(i);
+        this->teams->push_back(rand_team_generator(i));
     }
 }
 
@@ -43,7 +43,7 @@ Team ex6::League::rand_team_generator(int i)
 }
 
 
-Team * ex6::League::get_teams()
+vector<Team> * ex6::League::get_teams()
 {
     return this->teams;
 }
